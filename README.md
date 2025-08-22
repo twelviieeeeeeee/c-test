@@ -22,10 +22,10 @@ QA Automation Frameworks
 
 
 UI Frameworks
-[Automation Framework]([https://github.com/twelviieeeeeeee/test-python/blob/main/ya_page.py](https://github.com/twelviieeeeeeee/c-test/blob/main/genius_framework.cs)
+([https://github.com/twelviieeeeeeee/test-python/blob/main/ya_page.py](https://github.com/twelviieeeeeeee/c-test/blob/main/genius_framework.cs)
 
 API Framework
-[API фреймворк]([https://github.com/twelviieeeeeeee/test-python/blob/main/biba_framework.py](https://github.com/twelviieeeeeeee/c-test/blob/main/ApitiTest1.cs)
+([https://github.com/twelviieeeeeeee/test-python/blob/main/biba_framework.py](https://github.com/twelviieeeeeeee/c-test/blob/main/ApitiTest1.cs)
 
 🧪 Тесты
 
