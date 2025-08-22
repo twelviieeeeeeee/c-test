@@ -25,15 +25,14 @@ UI Frameworks
 [Automation Framework]([https://github.com/twelviieeeeeeee/test-python/blob/main/ya_page.py](https://github.com/twelviieeeeeeee/c-test/blob/main/genius_framework.cs))
 
 API Framework
-[API фреймворк
-]([https://github.com/twelviieeeeeeee/test-python/blob/main/biba_framework.py](https://github.com/twelviieeeeeeee/c-test/blob/main/ApitiTest1.cs))
+[API фреймворк]([https://github.com/twelviieeeeeeee/test-python/blob/main/biba_framework.py](https://github.com/twelviieeeeeeee/c-test/blob/main/ApitiTest1.cs))
 
 🧪 Тесты
 
 
-[UI SwagLabs]([https://github.com/twelviieeeeeeee/test-python/blob/main/test_automation_exercise.py](https://github.com/twelviieeeeeeee/c-test/blob/main/UnitTest1.cs))
+[UISwagLabs]([https://github.com/twelviieeeeeeee/test-python/blob/main/test_automation_exercise.py](https://github.com/twelviieeeeeeee/c-test/blob/main/UnitTest1.cs))
 
-[API тесты]([https://github.com/twelviieeeeeeee/test-python/blob/main/api_requests_test.py](https://github.com/twelviieeeeeeee/c-test/blob/main/ApiTests.cs))
+[APIтесты]([https://github.com/twelviieeeeeeee/test-python/blob/main/api_requests_test.py](https://github.com/twelviieeeeeeee/c-test/blob/main/ApiTests.cs))
 
 ⚙ Инфраструктура
 
