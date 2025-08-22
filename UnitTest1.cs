@@ -1,122 +1,140 @@
-﻿using System.Diagnostics;
-using NUnit.Framework;
-using Allure.Net.Commons;
-using Allure.NUnit;
-using Allure.NUnit.Attributes;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using System;
-using System.Text.Json.Serialization;
+﻿using System.Net;
+using ApiTests;
+using RestSharp;
+using Newtonsoft.Json.Linq;
 
-[SetUpFixture]
-public class AllureSetup
+
+namespace ApiTests
 {
-    [OneTimeSetUp]
-    public void GlobalSetup()
+    public class ApiClient
     {
-        AllureLifecycle.Instance.CleanupResultDirectory(); // Clear Results
+        private readonly RestClient _client;
+
+        public ApiClient(string baseUrl)
+        {
+            _client = new RestClient(baseUrl);
+        }
+
+        public JObject GetAllProducts()
+        {
+            var request = new RestRequest("/api/productsList", Method.Get);
+            var response = _client.Execute(request);
+
+            if (!response.IsSuccessful)
+                throw new HttpRequestException($"Request failed with status code {response.StatusCode}");
+
+            return JObject.Parse(response.Content);
+        }
     }
 }
 
-
-[AllureNUnit]
-[TestFixture]
-public class SwagTests : JoskiyTest
+public class PostClient
 {
-    [Test]
-    [AllureTag("smoke")]
-    [AllureSeverity(SeverityLevel.normal)]
-    [AllureOwner("Anton")]   
-    [AllureStory("Open main page")]
-    public void TestOpenSwag()
+    private readonly RestClient _client;
 
+    public PostClient(string baseUrl)
     {
-        var labsPage = new LabsPage(driver);
-        labsPage.Open();
-        Assert.That(driver.Title, Does.Contain("Swag"), "Title doesnt include 'Swag'");
+        _client = new RestClient(baseUrl);
+    }
+
+    public async Task<JObject> PostToAllProductsAsync(object body)
+    {
+        var request = new RestRequest("/api/productsList", Method.Post);
+        request.AddJsonBody(body);
+
+        var response = await _client.ExecuteAsync(request);
+
+        Console.WriteLine($"StatusCode: {response.StatusCode}");
+        Console.WriteLine($"Content: {response.Content}");
+
+        if (!response.IsSuccessful)
+        {
+            throw new HttpRequestException($"Request failed with status code {response.StatusCode}");
+        }
+        return JObject.Parse(response.Content);
     }
 }
 
-[AllureNUnit]
-[TestFixture]
-public class LoginTests : JoskiyTest
+public class GetAllClient
 {
-    [Test]
-    [TestCase("standard_user", "secret_sauce")]
-    [AllureTag("smoke")]
-    [AllureSeverity(SeverityLevel.normal)]
-    [AllureOwner("Anton")]
-    [AllureStory("UserLogin")]
-    public void TestLoginUser(string username, string password)
+    private readonly RestClient _client;
+
+    public GetAllClient(string baseUrl)
+
     {
-        var loginPage = new LoginPage(driver);
-        loginPage.LoginAs(username, password);
+        _client = new RestClient(baseUrl);
+    }
+
+    public async Task<JObject> GetAllBrandsListAsync(object body)
+    {
+        var request = new RestRequest("api/brandsList", Method.Get);
+        request.AddJsonBody(body);
+
+        var response = await _client.ExecuteAsync(request);
+
+        Console.WriteLine($"StatusCode: {response.StatusCode}");
+        Console.WriteLine($"Content: {response.Content}");
+
+        if (!response.IsSuccessful)
+        {
+            throw new HttpRequestException($"Request successfull with status code {response.StatusCode}");
+        }
+
+        return JObject.Parse(response.Content);
+    }
+}
+
+public class PutClient
+{
+    private readonly RestClient _client;
+
+    public PutClient(string baseUrl)
+    {
+        _client = new RestClient(baseUrl);
+    }
+
+    public async Task<JObject> PutToAllBrandLIstAsync(object body)
+    {
+        var request = new RestRequest("api/brandsList", Method.Put);
         
-        Assert.That(driver.Url, Does.Contain("inventory"), "User is not logged in");
+        var response = await _client.ExecuteAsync(request);
+
+        Console.WriteLine($"StatusCode: {response.StatusCode}");
+        Console.WriteLine($"Content: {response.Content}");
+
+        if (!response.IsSuccessful)
+        {
+            throw new HttpRequestException($"Request successfull with status code {response.StatusCode}");
+        }
+
+        return JObject.Parse(response.Content);
     }
 }
 
-public class AddToCartPageTest : JoskiyTest
+public class DeleteToClient
 {
-    [Test]
-    [TestCase("standard_user", "secret_sauce")]
-    [AllureTag("smoke")]
-    [AllureSeverity(SeverityLevel.normal)]
-    [AllureOwner("Diana")]
-    [AllureStory("AddToCart")]
-    public void TestAddToCartPage(string username, string password)
-    {
-        var loginPage = new LoginPage(driver);
-        loginPage.LoginAs(username, password);
+    private readonly RestClient _client;
 
-        var addToCart = new AddToCartPage(driver);
-        addToCart.ClickAdd();
-        Assert.IsTrue(addToCart.IsProductAddedToCart(),"Item is not added to cart");
+    public DeleteToClient(string baseUrl)
+    {
+        _client = new RestClient(baseUrl);
     }
-}
 
-public class RemovePageTest : JoskiyTest
-{
-    [Test]
-    [TestCase("standard_user", "secret_sauce")]
-    [AllureTag("smoke")]
-    [AllureSeverity(SeverityLevel.normal)]
-    [AllureOwner("Diana")]
-    [AllureStory("Remove from cart")]
-    public void TestRemovePage(string username, string password)
+    public async Task<JObject> DeleteToVErifyLoginAsync(object body)
     {
-        var loginPage = new LoginPage(driver);
-        loginPage.LoginAs(username, password);
+        var request = new RestRequest("api/verifyLogin");
 
-        var addToCart = new AddToCartPage(driver);
-        addToCart.ClickAdd();
-        Assert.IsTrue(addToCart.IsProductAddedToCart(), "Item is not added to cart");
+        var response = await _client.ExecuteAsync(request);
 
-        var remove = new RemovePage(driver);
-        remove.ClickRemove();
-        Assert.IsTrue(remove.IsProductRemovedFromCart(), "Product is not removed from cart");
-    }
-}
+        Console.WriteLine($"StatusCode: {response.StatusCode}");
+        Console.WriteLine($"Content: {response.Content}");
 
-public class CartOpenTest : JoskiyTest
-{
-    [Test]
-    [TestCase("standard_user", "secret_sauce")]
-    [AllureTag("smoke")]
-    [AllureSeverity(SeverityLevel.normal)]
-    [AllureOwner("Diana")]
-    [AllureStory("Open Cart")]
-    public void TestCartOpen(string username, string password)
-    {
-        var loginPage = new LoginPage(driver);
-        loginPage.LoginAs(username, password);
+        if (!response.IsSuccessful)
 
-        var addToCart = new AddToCartPage(driver);
-        addToCart.ClickAdd();
-        Assert.IsTrue(addToCart.IsProductAddedToCart(), "Product is added to cart");
+        {
+            throw new HttpRequestException($"Request successfull with status code{response.StatusCode}");
+        }
 
-        var ShoppingCart = new ShoppingCart(driver);
-        ShoppingCart.ClickCart();
-        Assert.IsTrue(ShoppingCart.IsCartOpen(), "Cart is open");
+        return JObject.Parse(response.Content);
     }
 }
