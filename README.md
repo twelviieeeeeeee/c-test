@@ -30,9 +30,9 @@ API Framework
 🧪 Тесты
 
 
-[UISwagLabs]([https://github.com/twelviieeeeeeee/test-python/blob/main/test_automation_exercise.py](https://github.com/twelviieeeeeeee/c-test/blob/main/UnitTest1.cs)
+UISwagLabs: ([https://github.com/twelviieeeeeeee/test-python/blob/main/test_automation_exercise.py](https://github.com/twelviieeeeeeee/c-test/blob/main/UnitTest1.cs)
 
-[APIтесты]([https://github.com/twelviieeeeeeee/test-python/blob/main/api_requests_test.py](https://github.com/twelviieeeeeeee/c-test/blob/main/ApiTests.cs)
+APIтесты: ([https://github.com/twelviieeeeeeee/test-python/blob/main/api_requests_test.py](https://github.com/twelviieeeeeeee/c-test/blob/main/ApiTests.cs)
 
 ⚙ Инфраструктура
 
