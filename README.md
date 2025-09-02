@@ -1,24 +1,28 @@
 QA Automation Frameworks
 
 
-В этом репозитории собраны мои учебные и практические проекты по автоматизации тестирования UI и API на C#.
-Фреймворки написаны с нуля под различные задачи, включая тестирование сайта SwagLabs.
+In this repositories i has a collection of automated tests for UI и API using C#.
+Frameworks are made from scratch for different tasks, including tests for  [SwagLabs](https://www.saucedemo.com/)
+```
+📌 Description
+```
+```
+Language: C#
 
-📌 Описание
-Язык: C#
+Tools: Selenium, RestSharp, Allure, NUnit Framework
 
-Инструменты: Selenium, RestSharp, Allure, NUnit Framework
+Testing type: UI и API
 
-Тип тестирования: UI и API
+Style: Page Object Model + Modular architecture
+```
+```
+⚠ Important: the repository contains only tests and frameworks.  
+There are 10 tests in total, 5 of which are UI tests and 5 are API tests.  
 
-Стиль: Page Object Model + модульная архитектура
+Binary files and initialization files are not included.
 
-
-⚠ Важно: в репозитории хранятся только тесты и фреймворки.Всего в репозитории находится 10 тестов, 5 из которых на UI и 5 на Api.
-
-Бинарные файлы и файлы инициализации отсутствуют.
-
-📂 Структура репозитория
+```
+📂 Project Structure
 
 
 UI Framework: [UIFramework](https://github.com/twelviieeeeeeee/c-test/blob/main/BaseTest.cs](https://github.com/twelviieeeeeeee/c-test/blob/main/genius_framework.cs))
@@ -30,9 +34,9 @@ API Framework: [APIFramework](https://github.com/twelviieeeeeeee/test-python/blo
 
 UISwagLabs: [UI](https://github.com/twelviieeeeeeee/test-python/blob/main/test_automation_exercise.py](https://github.com/twelviieeeeeeee/c-test/blob/main/UnitTest1.cs))
 
-APIтесты: [API](https://github.com/twelviieeeeeeee/test-python/blob/main/api_requests_test.py](https://github.com/twelviieeeeeeee/c-test/blob/main/ApiTests.cs))
+APItests: [API](https://github.com/twelviieeeeeeee/test-python/blob/main/api_requests_test.py](https://github.com/twelviieeeeeeee/c-test/blob/main/ApiTests.cs))
 
-⚙ Инфраструктура
+⚙ Infostructure
 
 Fixture: [conftestUI](https://github.com/twelviieeeeeeee/c-test/blob/main/BaseTest.cs)
 
